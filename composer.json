@@ -1,0 +1,15 @@
+{
+    "name": "rmartignoni/stem-reach-calculator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Raphael Martignoni",
+            "email": "rmartignoni@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "rmartignoni\\StemCalculator\\": "src"
+        }
+    }
+}
