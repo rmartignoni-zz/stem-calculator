@@ -16,7 +16,7 @@
             $this->drawStem($stemOne, $headtube, self::RED);
             $this->drawStem($stemTwo, $headtube, self::BLUE);
             $this->drawTube($headtube, self::WHITE);
-            $this->drawComparison($stemOne, $stemTwo);
+            $this->drawComparison($stemOne, $stemTwo, $headtube);
 
             return $imageAdapter->saveImage($this->image);
         }

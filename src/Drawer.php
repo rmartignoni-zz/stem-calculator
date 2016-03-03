@@ -129,9 +129,9 @@
          * @param Stem $stemOne
          * @param Stem $stemTwo
          */
-        protected function drawComparison(Stem $stemOne, Stem $stemTwo)
+        protected function drawComparison(Stem $stemOne, Stem $stemTwo, HeadTube $headTube)
         {
-            $comparison = $stemOne->compare($stemTwo);
+            $comparison = $stemOne->compare($stemTwo, $headTube);
 
             $line  = 1;
             $color = imagecolorallocate($this->image, 255, 255, 255);

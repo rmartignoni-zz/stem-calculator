@@ -100,16 +100,24 @@
 
         /**
          * @param Stem $stem
+         * @param HeadTube $headTube
          *
          * @return array
          */
-        public function compare(Stem $stem)
+        public function compare(Stem $stem, HeadTube $headTube)
         {
-            $currentStemLength = $this->getLength();
-            $currentStemHeight = $this->getHeight();
+            // Calculate the offset the spacers will cause in the stem
+            $currentSpacersOffsetX = ($headTube->getLength($this->getSpacers()) - $headTube->getLength());
+            $currentSpacersOffsetY = ($headTube->getHeight($this->getSpacers()) - $headTube->getHeight());
 
-            $comparedStemLength = $stem->getLength();
-            $comparedStemHeight = $stem->getHeight();
+            $currentStemLength = $this->getLength() - $currentSpacersOffsetX;
+            $currentStemHeight = $this->getHeight() + $currentSpacersOffsetY;
+
+            $comparedSpacersOffsetX = ($headTube->getLength($stem->getSpacers()) - $headTube->getLength());
+            $comparedSpacersOffsetY = ($headTube->getHeight($stem->getSpacers()) - $headTube->getHeight());
+
+            $comparedStemLength = $stem->getLength() - $comparedSpacersOffsetX;
+            $comparedStemHeight = $stem->getHeight() + $comparedSpacersOffsetY;
 
             $length = number_format($currentStemLength - $comparedStemLength, 1);
 
@@ -129,8 +137,8 @@
             }
 
             $comparison = [
-                'length' => 'The 1st stem is ' . abs($length) . 'mm ' . $lengthStr . ' than de 2nd one',
-                'height' => 'The 1st stem is ' . abs($height) . 'mm ' . $heightStr . ' than de 2nd one',
+                'length' => 'The red stem is ' . abs($length) . 'mm ' . $lengthStr . ' than de blue one',
+                'height' => 'The red stem is ' . abs($height) . 'mm ' . $heightStr . ' than de blue one',
             ];
 
             return $comparison;
